@@ -6,12 +6,12 @@
    ============================================================ */
 
 :root {
-  --paper: #fbf3de;       /* warm newsprint cream */
-  --paper-2: #f6ead0;
+   --paper: #f0f0f2;
+   --paper-2: #e7e7ea;
   --ink: #1a1a1a;         /* heavy comic ink */
   --ink-soft: #5a5247;
   --accent: #ffd23f;      /* sunny highlight */
-  --dot: rgba(26, 26, 26, 0.06);   /* halftone dots */
+   --dot: rgba(26, 26, 26, 0.05);
   --shadow: 5px 5px 0 var(--ink);  /* printed drop shadow */
   --shadow-sm: 3px 3px 0 var(--ink);
   --radius: 16px;
