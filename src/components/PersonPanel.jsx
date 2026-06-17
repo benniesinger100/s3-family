@@ -33,6 +33,7 @@ export default function PersonPanel({ person, items, weekStart, isMe, onAdd, onD
   return (
     <section className="panel" style={{ '--c': person.color, '--soft': person.soft }}>
       <div className="panel-head">
+        {person.icon && <img src={person.icon} alt={person.name} className="panel-icon" />}
         <span className="panel-name">{person.name}</span>
         {isMe && <span className="panel-you">you</span>}
       </div>

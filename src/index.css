@@ -309,6 +309,14 @@ button {
   justify-content: space-between;
   border-bottom: var(--border) solid var(--ink);
 }
+.panel-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  border: 2.5px solid #fff;
+  object-fit: cover;
+  margin-right: 10px;
+}
 .panel-name {
   font-size: 1.8rem;
   line-height: 1;
