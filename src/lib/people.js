@@ -1,4 +1,5 @@
 import bennieIcon from '../assets/bennie-icon.png'
+import leoraIcon from '../assets/leora-icon.png'
 
 // The four members of S³. Names + colors are hardcoded on purpose:
 // no sign-up, no admin screen, nothing for anyone to manage.
