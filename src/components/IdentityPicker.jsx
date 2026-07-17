@@ -10,6 +10,9 @@ export default function IdentityPicker({ onPick }) {
         <button className="picker-btn leora" onClick={() => onPick('Leora')}>
           Leora
         </button>
+        <button className="picker-btn mom" onClick={() => onPick('Mom')}>
+          Mom
+        </button>
       </div>
     </div>
   )

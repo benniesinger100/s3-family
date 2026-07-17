@@ -3,6 +3,7 @@ import { hasSupabase } from './lib/supabase'
 import * as store from './lib/store'
 import IdentityPicker from './components/IdentityPicker'
 import ListScreen from './components/ListScreen'
+import Dashboard from './components/Dashboard'
 
 const ID_KEY = 'waterloo_identity'
 
@@ -46,14 +47,18 @@ export default function App() {
       {!hasSupabase && (
         <div className="banner">Demo mode — data saved locally only. Add Supabase keys to sync for real.</div>
       )}
-      <ListScreen
-        identity={identity}
-        items={items}
-        loading={loading}
-        onSwitch={switchIdentity}
-        onAdd={store.addItem}
-        onDelete={store.deleteItem}
-      />
+      {identity === 'Mom' ? (
+        <Dashboard items={items} loading={loading} onSwitch={switchIdentity} />
+      ) : (
+        <ListScreen
+          identity={identity}
+          items={items}
+          loading={loading}
+          onSwitch={switchIdentity}
+          onAdd={store.addItem}
+          onDelete={store.deleteItem}
+        />
+      )}
     </div>
   )
 }

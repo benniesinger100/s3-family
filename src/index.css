@@ -74,6 +74,10 @@ body {
   background: #f542d7;
 }
 
+.picker-btn.mom {
+  background: #8b5cf6;
+}
+
 .picker-btn:active {
   transform: translateY(2px);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
@@ -111,6 +115,56 @@ body {
 
 .screen-leora .name {
   color: #f542d7;
+}
+
+.screen-mom .name {
+  color: #8b5cf6;
+}
+
+/* ===== Dashboard (Mom's two-list view) ===== */
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.dash-col {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 16px;
+  border-top: 4px solid #ccc;
+}
+
+.dash-col-bennie {
+  border-top-color: #2fa36b;
+}
+
+.dash-col-leora {
+  border-top-color: #f542d7;
+}
+
+.dash-name {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.dash-col-bennie .dash-name {
+  color: #2fa36b;
+}
+
+.dash-col-leora .dash-name {
+  color: #f542d7;
+}
+
+@media (max-width: 600px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+  }
+  .dash-name {
+    font-size: 1.05rem;
+  }
 }
 
 .switch-btn {
