@@ -1,583 +1,298 @@
-/* ============================================================
-   S³ — Sunday-funnies styling
-   Bold panel borders, halftone newsprint, hand-lettered display
-   type, speech bubbles, warm playful palette. All original — no
-   Peanuts/Garfield artwork or names.
-   ============================================================ */
-
-:root {
-   --paper: #f0f0f2;
-   --paper-2: #e7e7ea;
-  --ink: #1a1a1a;         /* heavy comic ink */
-  --ink-soft: #5a5247;
-  --accent: #ffd23f;      /* sunny highlight */
-   --dot: rgba(26, 26, 26, 0.05);
-  --shadow: 5px 5px 0 var(--ink);  /* printed drop shadow */
-  --shadow-sm: 3px 3px 0 var(--ink);
-  --radius: 16px;
-  --border: 3.5px;
-
-  font-family: 'Nunito', system-ui, -apple-system, sans-serif;
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-size-adjust: 100%;
-}
-
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html,
 body {
-  margin: 0;
-  min-height: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  color: #1a1a1a;
 }
 
-body {
-  background-color: var(--paper);
-  /* halftone dot texture */
-  background-image: radial-gradient(var(--dot) 1.3px, transparent 1.4px);
-  background-size: 13px 13px;
-}
-
-/* Display / hand-lettered headings */
-.logo,
-.picker-logo,
-.section-title,
-.panel-name,
-.wn-label {
-  font-family: 'Bangers', 'Nunito', sans-serif;
-  letter-spacing: 0.04em;
-}
-
-button {
-  font-family: inherit;
-  cursor: pointer;
-}
-
-/* ---------- App shell ---------- */
 .app {
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 14px 14px 60px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .banner {
-  margin: 10px 0;
-  padding: 10px 14px;
-  border: var(--border) dashed var(--ink);
-  border-radius: var(--radius);
-  background: #fff7df;
-  font-weight: 700;
-  font-size: 0.92rem;
+  background: #fff3cd;
+  border-bottom: 1px solid #ffc107;
+  padding: 12px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
   text-align: center;
 }
 
-.loading {
-  text-align: center;
-  font-weight: 800;
-  font-size: 1.1rem;
-  padding: 30px;
-}
-
-.footer {
-  margin-top: 34px;
-  text-align: center;
-  font-weight: 800;
-  color: var(--ink-soft);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  font-size: 0.78rem;
-}
-
-/* ============================================================
-   Identity picker
-   ============================================================ */
+/* ===== Identity Picker ===== */
 .picker {
-  min-height: 100dvh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  gap: 32px;
   padding: 24px;
-  gap: 6px;
 }
 
-.picker-logo {
-  font-family: 'Bangers', sans-serif;
-  font-size: clamp(4.5rem, 22vw, 8rem);
-  line-height: 1;
-  color: var(--accent);
-  -webkit-text-stroke: 3px var(--ink);
-  text-shadow: var(--shadow);
-  transform: rotate(-3deg);
+.picker-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0;
 }
 
-.picker-tag {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.4rem;
-  margin: 0 0 18px;
-  color: var(--ink-soft);
+.picker-subtitle {
+  font-size: 1.2rem;
+  color: #666;
+  margin: 0;
 }
 
-.picker-q {
-  font-family: 'Bangers', sans-serif;
-  font-size: 2rem;
-  letter-spacing: 0.04em;
-  margin: 0 0 18px;
-}
-
-.picker-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.picker-buttons {
+  display: flex;
   gap: 16px;
-  width: 100%;
-  max-width: 420px;
 }
 
 .picker-btn {
-  background: var(--soft);
-  border: var(--border) solid var(--ink);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 26px 10px;
-  font-size: 1.5rem;
-  font-weight: 900;
-  color: var(--ink);
-  transition: transform 0.06s ease, box-shadow 0.06s ease;
+  padding: 20px 40px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.1s, box-shadow 0.1s;
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-.picker-btn::before {
-  content: '';
-  display: block;
-  width: 34px;
-  height: 34px;
-  margin: 0 auto 10px;
-  border-radius: 50%;
-  background: var(--c);
-  border: 3px solid var(--ink);
+
+.picker-btn.bennie {
+  background: #2fa36b;
 }
+
+.picker-btn.leora {
+  background: #f542d7;
+}
+
 .picker-btn:active {
-  transform: translate(3px, 3px);
-  box-shadow: var(--shadow-sm);
+  transform: translateY(2px);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.15);
 }
 
-.picker-foot {
-  margin-top: 22px;
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
+/* ===== List Screen ===== */
+.screen {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 20px;
+  gap: 20px;
 }
 
-/* ============================================================
-   Header
-   ============================================================ */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 8px;
 }
 
-.title-panel {
-  background: var(--accent);
-  border: var(--border) solid var(--ink);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 4px 18px;
-  transform: rotate(-2deg);
-}
-.logo {
-  font-size: 2.6rem;
+.name {
+  font-size: 2rem;
+  font-weight: 700;
   margin: 0;
-  line-height: 1.05;
+  color: #1a1a1a;
 }
 
-.me-chip {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: #fff;
-  border: var(--border) solid var(--ink);
-  border-radius: 999px;
-  box-shadow: var(--shadow-sm);
-  padding: 8px 14px;
-  font-weight: 900;
-  font-size: 1rem;
-}
-.me-dot {
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--c);
-  border: 2.5px solid var(--ink);
-}
-.me-switch {
-  font-size: 0.7rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--ink-soft);
-  border-left: 2px solid var(--ink);
-  padding-left: 8px;
+.screen-bennie .name {
+  color: #2fa36b;
 }
 
-/* ============================================================
-   Week navigation
-   ============================================================ */
-.weeknav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  background: #fff;
-  border: var(--border) solid var(--ink);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow-sm);
-  padding: 8px 10px;
-  margin: 12px 0;
-}
-.wn-arrow {
-  flex: 0 0 auto;
-  width: 48px;
-  height: 48px;
-  font-size: 1.8rem;
-  font-weight: 900;
-  line-height: 1;
-  background: var(--accent);
-  border: 3px solid var(--ink);
-  border-radius: 12px;
-  box-shadow: var(--shadow-sm);
-}
-.wn-arrow:active {
-  transform: translate(2px, 2px);
-  box-shadow: none;
-}
-.wn-center {
-  flex: 1;
-  text-align: center;
-}
-.wn-label {
-  font-size: 1.45rem;
-  line-height: 1.1;
-}
-.wn-tag {
-  display: inline-block;
-  margin-top: 2px;
-  font-size: 0.78rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-.wn-tag--now {
-  color: var(--ink-soft);
-}
-.wn-tag--btn {
-  background: var(--ink);
-  color: var(--paper);
-  border: none;
-  border-radius: 999px;
-  padding: 4px 12px;
+.screen-leora .name {
+  color: #f542d7;
 }
 
-/* ============================================================
-   Board + person panels
-   ============================================================ */
-.board {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 16px;
+.switch-btn {
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
 }
 
-.panel {
-  background: #fff;
-  border: var(--border) solid var(--ink);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+.switch-btn:hover {
+  background: #e9e9e9;
 }
 
-.panel-head {
-  background: var(--c);
-  color: #fff;
-  padding: 10px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: var(--border) solid var(--ink);
-}
-.panel-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  border: 2.5px solid #fff;
-  object-fit: cover;
-  margin-right: 10px;
-}
-.panel-name {
-  font-size: 1.8rem;
-  line-height: 1;
-  text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
-}
-.panel-you {
-  font-size: 0.7rem;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: #fff;
-  color: var(--ink);
-  border: 2.5px solid var(--ink);
-  border-radius: 999px;
-  padding: 2px 9px;
+.switch-btn:active {
+  transform: scale(0.98);
 }
 
-.panel-body {
-  padding: 12px 14px;
-  background: var(--soft);
-  flex: 1;
-  min-height: 60px;
-}
-.panel-empty {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.05rem;
-  color: var(--ink-soft);
-  margin: 6px 2px;
-}
-
-.day-group {
-  margin-bottom: 10px;
-}
-.day-label {
-  font-weight: 900;
-  font-size: 0.72rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--ink-soft);
-  margin-bottom: 4px;
-}
-.day-items {
+/* ===== Items List ===== */
+.items-list {
   list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 12px;
 }
+
+.loading {
+  text-align: center;
+  font-weight: 600;
+  padding: 20px;
+  color: #666;
+}
+
+.empty {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  padding: 20px;
+}
+
 .item {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   background: #fff;
-  border: 2.5px solid var(--ink);
-  border-radius: 10px;
-  padding: 7px 10px;
-  font-weight: 700;
-  font-size: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 12px 14px;
+  transition: all 0.2s;
 }
+
+.item:hover {
+  border-color: #ccc;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
 .item-text {
   flex: 1;
+  font-weight: 500;
   word-break: break-word;
 }
-.item-del {
+
+.item-delete {
   flex: 0 0 auto;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
-  border: 2.5px solid var(--ink);
-  background: #fff;
-  font-size: 1.1rem;
-  font-weight: 900;
-  line-height: 1;
-  color: var(--ink);
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 4px;
+  background: #f5f5f5;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #999;
+  transition: all 0.2s;
 }
-.item-del:active {
-  background: var(--ink);
+
+.item-delete:hover {
+  background: #ff6b6b;
   color: #fff;
 }
 
-/* Add form */
+.item-delete:active {
+  transform: scale(0.95);
+}
+
+/* ===== Add Form ===== */
 .add-form {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+  position: sticky;
+  bottom: 20px;
+  background: #f5f5f5;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.add-input {
+  flex: 1;
   padding: 12px 14px;
-  border-top: var(--border) dashed var(--ink);
-  background: #fff;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-.add-text,
-.add-day,
-.note-input {
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
   font-family: inherit;
-  font-size: 1.05rem;
-  font-weight: 700;
-  border: 3px solid var(--ink);
-  border-radius: 10px;
-  padding: 11px 12px;
-  background: var(--paper);
-  color: var(--ink);
+  transition: all 0.2s;
 }
-.add-text:focus,
-.add-day:focus,
-.note-input:focus {
+
+.add-input:focus {
   outline: none;
-  background: #fff;
-  box-shadow: var(--shadow-sm);
+  border-color: #999;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
 }
-.add-row {
-  display: flex;
-  gap: 8px;
+
+.add-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
 }
-.add-day {
-  flex: 1;
-}
-.add-btn,
-.note-btn {
-  flex: 0 0 auto;
-  background: var(--c, var(--ink));
+
+.screen-bennie .add-btn {
+  background: #2fa36b;
   color: #fff;
-  border: 3px solid var(--ink);
-  border-radius: 10px;
-  padding: 11px 20px;
-  font-weight: 900;
-  font-size: 1.05rem;
-  box-shadow: var(--shadow-sm);
-}
-.add-btn:active,
-.note-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: none;
-}
-.add-btn:disabled,
-.note-btn:disabled {
-  opacity: 0.45;
-  box-shadow: none;
 }
 
-/* ============================================================
-   Copy-this-week button
-   ============================================================ */
-.copyweek {
-  margin: 18px 0 6px;
-}
-.copy-btn {
-  width: 100%;
-  background: var(--accent);
-  border: var(--border) solid var(--ink);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 15px;
-  font-weight: 900;
-  font-size: 1.1rem;
-  color: var(--ink);
-}
-.copy-btn:active {
-  transform: translate(3px, 3px);
-  box-shadow: var(--shadow-sm);
+.screen-leora .add-btn {
+  background: #f542d7;
+  color: #fff;
 }
 
-/* ============================================================
-   Notes & cheers (speech bubbles)
-   ============================================================ */
-.notes {
-  margin-top: 26px;
-}
-.section-title {
-  font-size: 2rem;
-  margin: 0 0 10px;
-  transform: rotate(-1deg);
-}
-.note-form {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-.note-input {
-  flex: 1;
+.add-btn:hover:not(:disabled) {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
-.note-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.note-empty {
-  font-family: 'Patrick Hand', cursive;
-  font-size: 1.1rem;
-  color: var(--ink-soft);
+.add-btn:active:not(:disabled) {
+  transform: translateY(0);
 }
 
-.bubble-row {
-  max-width: 88%;
-}
-.bubble {
-  position: relative;
-  background: #fff;
-  border: 3px solid var(--ink);
-  border-left: 8px solid var(--c);
-  border-radius: 16px;
-  box-shadow: var(--shadow-sm);
-  padding: 12px 15px;
-}
-/* speech-bubble tail */
-.bubble::after {
-  content: '';
-  position: absolute;
-  left: 26px;
-  bottom: -14px;
-  width: 0;
-  height: 0;
-  border: 8px solid transparent;
-  border-top-color: var(--ink);
-  border-bottom: 0;
-}
-.bubble::before {
-  content: '';
-  position: absolute;
-  left: 28px;
-  bottom: -9px;
-  width: 0;
-  height: 0;
-  border: 6px solid transparent;
-  border-top-color: #fff;
-  border-bottom: 0;
-  z-index: 1;
-}
-.bubble-text {
-  margin: 0;
-  font-size: 1.1rem;
-  font-weight: 700;
-  word-break: break-word;
-}
-.bubble-meta {
-  margin-top: 8px;
-  margin-left: 8px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: var(--ink-soft);
-}
-.bubble-who {
-  font-weight: 900;
+.add-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
-/* ============================================================
-   Responsive: stack on phones, fan out on bigger screens
-   ============================================================ */
-@media (min-width: 640px) {
-  .board {
-    grid-template-columns: 1fr 1fr;
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .picker {
+    gap: 24px;
   }
-}
-@media (min-width: 1000px) {
-  .board {
-    grid-template-columns: repeat(4, 1fr);
+
+  .picker-title {
+    font-size: 1.8rem;
   }
-  .logo {
-    font-size: 3rem;
+
+  .picker-buttons {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .picker-btn {
+    width: 100%;
+  }
+
+  .screen {
+    padding: 16px;
+    gap: 16px;
+  }
+
+  .name {
+    font-size: 1.5rem;
+  }
+
+  .add-form {
+    flex-direction: column;
+    gap: 8px;
   }
 }
