@@ -121,11 +121,52 @@ body {
   color: #8b5cf6;
 }
 
+/* ===== Dashboard toggle ===== */
+.toggle {
+  display: flex;
+  gap: 8px;
+  background: #ececec;
+  padding: 4px;
+  border-radius: 8px;
+  width: fit-content;
+}
+
+.toggle-btn {
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.toggle-btn.active {
+  background: #fff;
+  color: #1a1a1a;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+}
+
 /* ===== Dashboard (Mom's two-list view) ===== */
 .dash-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 16px;
+}
+
+.dash-subgroup {
+  margin-top: 12px;
+}
+
+.dash-sublabel {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #888;
+  margin-bottom: 8px;
 }
 
 .dash-col {
@@ -184,6 +225,21 @@ body {
 
 .switch-btn:active {
   transform: scale(0.98);
+}
+
+/* ===== Categories ===== */
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.category-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #444;
+  padding-bottom: 4px;
+  border-bottom: 2px solid #eee;
 }
 
 /* ===== Items List ===== */
@@ -279,6 +335,21 @@ body {
   outline: none;
   border-color: #999;
   box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.05);
+}
+
+.add-select {
+  padding: 12px 10px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-family: inherit;
+  background: #fff;
+  cursor: pointer;
+}
+
+.add-select:focus {
+  outline: none;
+  border-color: #999;
 }
 
 .add-btn {

@@ -33,14 +33,14 @@ export async function fetchAllItems() {
   return lsRead()
 }
 
-export async function addItem({ person, text }) {
+export async function addItem({ person, text, category }) {
   if (hasSupabase) {
-    const { error } = await supabase.from('items').insert({ person, text })
+    const { error } = await supabase.from('items').insert({ person, text, category })
     if (error) throw error
     return
   }
   const items = lsRead()
-  items.push({ id: uid(), person, text, created_at: new Date().toISOString() })
+  items.push({ id: uid(), person, text, category, created_at: new Date().toISOString() })
   lsWrite(items)
   emitLocal()
 }
