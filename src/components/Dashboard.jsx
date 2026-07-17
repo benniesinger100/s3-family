@@ -63,7 +63,7 @@ export default function Dashboard({ items, loading, onSwitch, onUpdate, onClearP
       <div className="header">
         <h1 className="name">Both Lists</h1>
         <button className="switch-btn" onClick={onSwitch}>
-          Switch
+          Not Mom?
         </button>
       </div>
 

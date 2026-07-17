@@ -375,6 +375,50 @@ body {
   background: #f0f0f0;
 }
 
+/* ===== Drag and drop ===== */
+.drag-hint {
+  font-size: 0.85rem;
+  color: #999;
+  margin: -6px 0 4px;
+}
+
+.item-draggable {
+  touch-action: none; /* let the drag sensor own touch gestures on the row */
+  cursor: grab;
+}
+
+.drag-handle {
+  flex: 0 0 auto;
+  color: #bbb;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: grab;
+  user-select: none;
+}
+
+.item-dragging {
+  opacity: 0.35;
+}
+
+.item-overlay {
+  cursor: grabbing;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  border-color: #999;
+  background: #fff;
+}
+
+/* Drop zones stay a comfortable target even when empty. */
+.droppable {
+  min-height: 56px;
+  border-radius: 8px;
+  transition: background 0.15s, box-shadow 0.15s;
+}
+
+.droppable-over {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 0 0 2px #bbb;
+}
+
 /* Packed item on owner screen: greyed + locked */
 .item-packed {
   background: #f2f2f2;
