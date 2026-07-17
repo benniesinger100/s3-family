@@ -47,7 +47,7 @@ export default function App() {
       {!hasSupabase && (
         <div className="banner">Demo mode — data saved locally only. Add Supabase keys to sync for real.</div>
       )}
-      {identity === 'Mom' ? (
+      {identity === 'Moms' || identity === 'Mom' ? (
         <Dashboard
           items={items}
           loading={loading}

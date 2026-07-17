@@ -55,26 +55,39 @@ body {
 }
 
 .picker-btn {
-  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  min-width: 130px;
+  padding: 18px 24px;
   font-size: 1.2rem;
   font-weight: 700;
   border: none;
-  border-radius: 8px;
+  border-radius: 12px;
   cursor: pointer;
   transition: transform 0.1s, box-shadow 0.1s;
   color: #fff;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.picker-motif {
+  width: 56px;
+  height: 56px;
+}
+
 .picker-btn.bennie {
   background: #2fa36b;
 }
 
+/* Leora — pastel pink with dark ink text */
 .picker-btn.leora {
-  background: #f542d7;
+  background: #f9a8d4;
+  color: #7a2452;
 }
 
-.picker-btn.mom {
+.picker-btn.moms {
   background: #8b5cf6;
 }
 
@@ -102,6 +115,23 @@ body {
   gap: 12px;
 }
 
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.motif {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+}
+
+.motif-sm {
+  width: 30px;
+  height: 30px;
+}
+
 .name {
   font-size: 2rem;
   font-weight: 700;
@@ -109,12 +139,25 @@ body {
   color: #1a1a1a;
 }
 
+/* Gentle per-person wash at the top of each screen */
+.screen-bennie {
+  background: linear-gradient(#eef7f1, transparent 200px);
+}
+
+.screen-leora {
+  background: linear-gradient(#fff2f8, transparent 200px);
+}
+
+.screen-mom {
+  background: linear-gradient(#f5f1ff, transparent 200px);
+}
+
 .screen-bennie .name {
   color: #2fa36b;
 }
 
 .screen-leora .name {
-  color: #f542d7;
+  color: #e83e8c;
 }
 
 .screen-mom .name {
@@ -212,7 +255,7 @@ body {
 }
 
 .dash-col-leora {
-  border-top-color: #f542d7;
+  border-top-color: #f472b6;
 }
 
 .dash-name {
@@ -226,7 +269,7 @@ body {
 }
 
 .dash-col-leora .dash-name {
-  color: #f542d7;
+  color: #e83e8c;
 }
 
 @media (max-width: 600px) {
@@ -575,7 +618,7 @@ body {
 }
 
 .screen-leora .add-btn {
-  background: #f542d7;
+  background: #f472b6;
   color: #fff;
 }
 

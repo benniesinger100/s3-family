@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { CATEGORIES } from '../lib/categories'
 import ItemRow from './ItemRow'
+import { ArchieIcon, WhaleIcon } from './Motifs'
 
 const PEOPLE = ['Bennie', 'Leora']
 
@@ -61,9 +62,13 @@ export default function Dashboard({ items, loading, onSwitch, onUpdate, onClearP
   return (
     <div className="screen screen-mom">
       <div className="header">
-        <h1 className="name">Both Lists</h1>
+        <div className="brand">
+          <ArchieIcon className="motif motif-sm" />
+          <WhaleIcon className="motif motif-sm" />
+          <h1 className="name">Both Lists</h1>
+        </div>
         <button className="switch-btn" onClick={onSwitch}>
-          Not Mom?
+          Not Moms?
         </button>
       </div>
 

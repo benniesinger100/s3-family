@@ -11,6 +11,7 @@ import {
 } from '@dnd-kit/core'
 import { CATEGORIES, DEFAULT_CATEGORY } from '../lib/categories'
 import ItemRow from './ItemRow'
+import { PersonMotif } from './Motifs'
 
 // A draggable active item: drag to move between lists, tap text to edit.
 function DraggableItem({ item, onUpdate, onDelete }) {
@@ -117,7 +118,10 @@ export default function ListScreen({ identity, items, loading, onSwitch, onAdd, 
   return (
     <div className={`screen screen-${identity.toLowerCase()}`}>
       <div className="header">
-        <h1 className="name">{identity}'s Lists</h1>
+        <div className="brand">
+          <PersonMotif identity={identity} className="motif" />
+          <h1 className="name">{identity}'s Lists</h1>
+        </div>
         <button className="switch-btn" onClick={onSwitch}>
           Not {identity}?
         </button>
