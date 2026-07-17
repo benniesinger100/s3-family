@@ -121,6 +121,36 @@ body {
   color: #8b5cf6;
 }
 
+/* ===== Dashboard controls ===== */
+.dash-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.delivered-btn {
+  padding: 10px 16px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  background: #8b5cf6;
+  color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.delivered-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.delivered-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
 /* ===== Dashboard toggle ===== */
 .toggle {
   display: flex;
@@ -284,6 +314,138 @@ body {
   flex: 1;
   font-weight: 500;
   word-break: break-word;
+}
+
+/* Tap-to-edit text button (owner) */
+.item-text-btn {
+  flex: 1;
+  text-align: left;
+  background: none;
+  border: none;
+  font: inherit;
+  font-weight: 500;
+  color: inherit;
+  cursor: text;
+  padding: 0;
+}
+
+.item-edit {
+  flex: 1;
+  font: inherit;
+  font-weight: 500;
+  padding: 4px 8px;
+  border: 1px solid #999;
+  border-radius: 4px;
+}
+
+.item-edit:focus {
+  outline: none;
+  border-color: #555;
+}
+
+/* "Seen by Mom" badge */
+.badge {
+  flex: 0 0 auto;
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.badge-seen {
+  background: #ede4ff;
+  color: #6d3ff0;
+}
+
+/* Move-to-other-category button (owner) */
+.item-move {
+  flex: 0 0 auto;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 5px 8px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.item-move:hover {
+  background: #f0f0f0;
+}
+
+/* Packed item on owner screen: greyed + locked */
+.item-packed {
+  background: #f2f2f2;
+  color: #999;
+  border-style: dashed;
+}
+
+.item-backpack {
+  flex: 0 0 auto;
+  font-size: 1.1rem;
+  filter: grayscale(0.3);
+}
+
+.item-packed .item-text {
+  text-decoration: line-through;
+  color: #999;
+}
+
+.item-locked {
+  flex: 0 0 auto;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #aaa;
+}
+
+/* Mom stage control */
+.stage-control {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 4px;
+  background: #eee;
+  padding: 3px;
+  border-radius: 6px;
+}
+
+.stage-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border: none;
+  border-radius: 4px;
+  background: transparent;
+  color: #777;
+  cursor: pointer;
+}
+
+.stage-pill.active {
+  background: #8b5cf6;
+  color: #fff;
+}
+
+.item-mom-packed {
+  background: #f6f2ff;
+}
+
+/* Mom rows stack text above the stage control so narrow columns don't
+   squeeze the text into a single character per line. */
+.item-mom {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.item-mom .item-text {
+  width: 100%;
+}
+
+.item-mom .stage-control {
+  align-self: flex-start;
 }
 
 .item-delete {

@@ -48,7 +48,13 @@ export default function App() {
         <div className="banner">Demo mode — data saved locally only. Add Supabase keys to sync for real.</div>
       )}
       {identity === 'Mom' ? (
-        <Dashboard items={items} loading={loading} onSwitch={switchIdentity} />
+        <Dashboard
+          items={items}
+          loading={loading}
+          onSwitch={switchIdentity}
+          onUpdate={store.updateItem}
+          onClearPacked={store.clearPacked}
+        />
       ) : (
         <ListScreen
           identity={identity}
@@ -56,6 +62,7 @@ export default function App() {
           loading={loading}
           onSwitch={switchIdentity}
           onAdd={store.addItem}
+          onUpdate={store.updateItem}
           onDelete={store.deleteItem}
         />
       )}

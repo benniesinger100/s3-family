@@ -35,13 +35,35 @@ export async function fetchAllItems() {
 
 export async function addItem({ person, text, category }) {
   if (hasSupabase) {
-    const { error } = await supabase.from('items').insert({ person, text, category })
+    const { error } = await supabase.from('items').insert({ person, text, category, status: 'entered' })
     if (error) throw error
     return
   }
   const items = lsRead()
-  items.push({ id: uid(), person, text, category, created_at: new Date().toISOString() })
+  items.push({ id: uid(), person, text, category, status: 'entered', created_at: new Date().toISOString() })
   lsWrite(items)
+  emitLocal()
+}
+
+// Patch any fields on an item (text, category, status).
+export async function updateItem(id, patch) {
+  if (hasSupabase) {
+    const { error } = await supabase.from('items').update(patch).eq('id', id)
+    if (error) throw error
+    return
+  }
+  lsWrite(lsRead().map((i) => (i.id === id ? { ...i, ...patch } : i)))
+  emitLocal()
+}
+
+// Mom's "delivered" action: remove every packed item at once.
+export async function clearPacked() {
+  if (hasSupabase) {
+    const { error } = await supabase.from('items').delete().eq('status', 'packed')
+    if (error) throw error
+    return
+  }
+  lsWrite(lsRead().filter((i) => i.status !== 'packed'))
   emitLocal()
 }
 

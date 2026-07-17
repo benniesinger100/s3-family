@@ -8,6 +8,7 @@ create table items (
   person      text not null check (person in ('Bennie', 'Leora')),
   text        text not null check (char_length(text) between 1 and 200),
   category    text not null default 'Groceries',
+  status      text not null default 'entered',
   created_at  timestamptz not null default now()
 );
 
