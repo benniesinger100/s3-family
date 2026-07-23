@@ -10,12 +10,14 @@ const ID_KEY = 'waterloo_identity'
 export default function App() {
   const [identity, setIdentity] = useState(() => localStorage.getItem(ID_KEY))
   const [items, setItems] = useState([])
+  const [settings, setSettings] = useState({})
   const [loading, setLoading] = useState(true)
 
   const reload = useCallback(async () => {
     try {
-      const all = await store.fetchAllItems()
+      const [all, s] = await Promise.all([store.fetchAllItems(), store.fetchSettings()])
       setItems(all)
+      setSettings(s)
     } catch (err) {
       console.error('Failed to load', err)
     } finally {
@@ -50,10 +52,12 @@ export default function App() {
       {identity === 'Moms' || identity === 'Mom' ? (
         <Dashboard
           items={items}
+          settings={settings}
           loading={loading}
           onSwitch={switchIdentity}
           onUpdate={store.updateItem}
           onClearPacked={store.clearPacked}
+          onSaveSettings={store.updateSettings}
         />
       ) : (
         <ListScreen

@@ -201,6 +201,70 @@ body {
   color: #8b5cf6;
 }
 
+/* ===== Visit settings (Moms) ===== */
+.visit-panel {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 14px 16px;
+}
+
+.visit-fields {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.visit-field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1 1 180px;
+}
+
+.visit-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #666;
+}
+
+.visit-input {
+  padding: 10px 12px;
+  font-size: 1rem;
+  font-family: inherit;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.visit-input:focus {
+  outline: none;
+  border-color: #8b5cf6;
+}
+
+.visit-save {
+  padding: 10px 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  background: #8b5cf6;
+  color: #fff;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.visit-status {
+  margin-top: 10px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #888;
+}
+
+.visit-status.armed {
+  color: #2fa36b;
+}
+
 /* ===== Dashboard controls ===== */
 .dash-controls {
   display: flex;

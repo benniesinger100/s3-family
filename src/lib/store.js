@@ -1,6 +1,7 @@
 import { supabase, hasSupabase } from './supabase'
 
 const LS_ITEMS = 'waterloo_items'
+const LS_SETTINGS = 'waterloo_settings'
 
 function lsRead() {
   try {
@@ -77,12 +78,39 @@ export async function deleteItem(id) {
   emitLocal()
 }
 
+// ===== Visit settings (arrival date + Moms' phone) =====
+// Stored as a single row (id = 1) so everyone shares the same visit info.
+export async function fetchSettings() {
+  if (hasSupabase) {
+    const { data, error } = await supabase.from('settings').select('*').eq('id', 1).maybeSingle()
+    if (error) throw error
+    return data || {}
+  }
+  try {
+    return JSON.parse(localStorage.getItem(LS_SETTINGS) || '{}')
+  } catch {
+    return {}
+  }
+}
+
+export async function updateSettings(patch) {
+  if (hasSupabase) {
+    const { error } = await supabase.from('settings').upsert({ id: 1, ...patch })
+    if (error) throw error
+    return
+  }
+  const current = await fetchSettings()
+  localStorage.setItem(LS_SETTINGS, JSON.stringify({ ...current, ...patch }))
+  emitLocal()
+}
+
 // ===== Realtime =====
 export function subscribe(onChange) {
   if (hasSupabase) {
     const channel = supabase
       .channel('items-changes')
       .on('postgres_changes', { event: '*', schema: 'public', table: 'items' }, onChange)
+      .on('postgres_changes', { event: '*', schema: 'public', table: 'settings' }, onChange)
       .subscribe()
     return () => {
       supabase.removeChannel(channel)

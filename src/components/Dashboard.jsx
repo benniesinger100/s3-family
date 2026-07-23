@@ -1,7 +1,61 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { CATEGORIES } from '../lib/categories'
+import { visitStatus } from '../lib/visit'
 import ItemRow from './ItemRow'
 import { MomsAvatar } from './Motifs'
+
+// Moms sets when she's arriving (and the number to text).
+// Texts fire only for changes within one day of that date.
+function VisitSettings({ settings, onSave }) {
+  const [date, setDate] = useState('')
+  const [notifyTo, setNotifyTo] = useState('')
+  const [saved, setSaved] = useState(false)
+
+  useEffect(() => {
+    setDate(settings.arrival_date || '')
+    setNotifyTo(settings.notify_to || '')
+  }, [settings.arrival_date, settings.notify_to])
+
+  const status = visitStatus(settings.arrival_date)
+
+  async function save(e) {
+    e.preventDefault()
+    try {
+      await onSave({ arrival_date: date || null, notify_to: notifyTo || null })
+      setSaved(true)
+      setTimeout(() => setSaved(false), 2200)
+    } catch (err) {
+      alert('Could not save. Please try again.')
+      console.error(err)
+    }
+  }
+
+  return (
+    <form className="visit-panel" onSubmit={save}>
+      <div className="visit-fields">
+        <label className="visit-field">
+          <span className="visit-label">When are you arriving?</span>
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} className="visit-input" />
+        </label>
+        <label className="visit-field">
+          <span className="visit-label">Send alerts to</span>
+          <input
+            type="text"
+            value={notifyTo}
+            onChange={(e) => setNotifyTo(e.target.value)}
+            placeholder="mom@example.com"
+            className="visit-input"
+          />
+        </label>
+        <button className="visit-save">{saved ? 'Saved ✓' : 'Save'}</button>
+      </div>
+      <p className={`visit-status ${status.armed ? 'armed' : ''}`}>
+        {status.armed ? '🔔 ' : '🔕 '}
+        {status.text} Max 2 alerts a day.
+      </p>
+    </form>
+  )
+}
 
 const PEOPLE = ['Bennie', 'Leora']
 
@@ -28,7 +82,15 @@ function Card({ title, colorClass, groups, onUpdate }) {
   )
 }
 
-export default function Dashboard({ items, loading, onSwitch, onUpdate, onClearPacked }) {
+export default function Dashboard({
+  items,
+  settings = {},
+  loading,
+  onSwitch,
+  onUpdate,
+  onClearPacked,
+  onSaveSettings,
+}) {
   const [groupBy, setGroupBy] = useState('person') // 'person' | 'category'
 
   const packedCount = items.filter((i) => i.status === 'packed').length
@@ -70,6 +132,8 @@ export default function Dashboard({ items, loading, onSwitch, onUpdate, onClearP
           Not Moms?
         </button>
       </div>
+
+      <VisitSettings settings={settings} onSave={onSaveSettings} />
 
       <div className="dash-controls">
         <div className="toggle">
